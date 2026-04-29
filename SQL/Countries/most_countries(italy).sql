@@ -1,8 +1,11 @@
-SELECT r.personId,
-       count(DISTINCT c.countryId) Countries
-FROM   Results r
-       INNER JOIN Competitions c ON r.competitionId = c.id
-WHERE  r.countryId = 'Italy'
-       AND c.countryId NOT REGEXP '^X[A-Z]{1}$'
-GROUP BY r.personId
-ORDER BY Countries DESC
+select
+    r.person_id,
+    count(distinct c.country_id) countries
+from
+    results r
+    inner join competitions c on r.competition_id = c.id
+where
+    r.country_id = 'Italy'
+    and c.country_id NOT REGEXP '^X[A-Z]{1}$'
+group by r.person_id
+order by countries desc
